@@ -72,44 +72,45 @@
 
     if (isset($name) && isset($content)) {
         echo "Le formulaire est bien rempli <br><br>";
-    }
 
-    $bdd = new PDO('mysql:host=localhost;dbname=article', 'root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 
-    $req = $bdd->prepare("INSERT INTO article (nom_article, contenu_article) VALUES (?,?)");
+        $bdd = new PDO('mysql:host=localhost;dbname=article', 'root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 
-    $req->execute([$name, $content]);
+        $req = $bdd->prepare("INSERT INTO article (nom_article, contenu_article) VALUES (?,?)");
 
-    $data = $req->fetch();
+        $req->execute([$name, $content]);
 
-    // var_dump($data);
+        $data = $req->fetch();
+
+        // var_dump($data);
     
-    echo "Ajout de {$name} et de {$content} bien pris en compte !!!";
+        echo "Ajout de {$name} et de {$content} bien pris en compte !!!";
 
 
 
-    // Exercice 20: /* a) Créer une page php,
-    /* b) Ajouter le script php permettant de se connecter à la base de données articles,
-    c) Ajouter le script php qui va effectuer une requête SQL select préparée permettant de récupérer tous les articles,
-    d) Formater le résultat de la requête (dans le résultat de la boucle while) pour quelle l’affiche sous cette forme :
+        // Exercice 20: /* a) Créer une page php,
+        /* b) Ajouter le script php permettant de se connecter à la base de données articles,
+        c) Ajouter le script php qui va effectuer une requête SQL select préparée permettant de récupérer tous les articles,
+        d) Formater le résultat de la requête (dans le résultat de la boucle while) pour quelle l’affiche sous cette forme :
 
-    <p>numéro de l’article : id de l’article n</p>
-    <br>
-    <p>nom de l’article : nom de l’article n</p>
-    <br>
-    <p>contenu de l’article : contenu de l’article n</p>
-    <br> */
+        <p>numéro de l’article : id de l’article n</p>
+        <br>
+        <p>nom de l’article : nom de l’article n</p>
+        <br>
+        <p>contenu de l’article : contenu de l’article n</p>
+        <br> */
 
-    $req1 = $bdd->prepare("SELECT * FROM article");
+        $req1 = $bdd->prepare("SELECT * FROM article");
 
-    $req1->execute();
+        $req1->execute();
 
-    $data1 = $req1->fetchAll();
+        $data1 = $req1->fetchAll();
 
-    foreach ($data1 as $value) {
-        echo "<p>Numéro de l'article : {$value['id_article']} </p>
+        foreach ($data1 as $value) {
+            echo "<p>Numéro de l'article : {$value['id_article']} </p>
         <p>Nom de l'article :  {$value['nom_article']} </p>
         <p>Description de l'article : {$value['contenu_article']} </p>";
+        }
     }
 
 
