@@ -67,7 +67,7 @@
     if (isset($name_user) && isset($first_name_user) && isset($login_user) && isset($mdp_user)) {
         echo "Le formulaire est bien rempli <br><br>";
 
-        $bdd = new PDO('mysql:host=localhost;dbname=task', 'root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+        $bdd = new PDO('mysql:host=localhost;dbname=task', 'root', '', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)); 
 
         $req = $bdd->prepare("INSERT INTO userr (name_user, first_name_user, login_user, mdp_user_) VALUES (?,?,?,?)");
 
