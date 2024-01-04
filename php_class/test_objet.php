@@ -5,9 +5,4 @@
     $newmaison->$nom = "erika";
     $newmaison->$longueur = 150;
     $newmaison->$largeur = 200;
-
-
-    new maison->$surface;
-
-
 ?>
